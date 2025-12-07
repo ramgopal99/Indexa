@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Indexa (Dev)",
+  "name": "Indexa",
   "version": "1.0.0",
-  "description": "Development version - Automatically indexes and highlights topics from ChatGPT conversations",
+  "description": "Automatically indexes and highlights topics from ChatGPT and Claude conversations",
   "permissions": [
     "activeTab",
     "storage",
@@ -13,8 +13,7 @@
       "matches": [
         "https://chat.openai.com/*",
         "https://chatgpt.com/*",
-        "http://localhost/*",
-        "file:///*"
+        "https://claude.ai/*"
       ],
       "js": ["content.js"],
       "css": ["content.css"],
@@ -27,19 +26,24 @@
       "matches": [
         "https://chat.openai.com/*",
         "https://chatgpt.com/*",
-        "http://localhost/*",
-        "file:///*"
+        "https://claude.ai/*"
       ]
     }
   ],
   "action": {
     "default_popup": "index.html",
-    "default_title": "Indexa (Dev)"
+    "default_title": "Indexa"
   },
   "icons": {
     "16": "logo.png",
     "32": "logo.png",
     "48": "logo.png",
     "128": "logo.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "indexa@extension.local",
+      "strict_min_version": "109.0"
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { Sidebar } from './components/sidebar/Sidebar'
+import { runtime } from './lib/browser-api'
 
 class SideIndexer {
   private sidebar: Sidebar
@@ -38,7 +39,7 @@ class SideIndexer {
 const indexer = new SideIndexer()
 
 // Listen for messages from popup
-chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message.action === 'toggleSidebar') {
     if (indexer.isSidebarVisible()) {
       indexer.hideSidebar()

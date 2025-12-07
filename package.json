@@ -5,8 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && copy public\\manifest.json dist\\",
-    "build:dev": "tsc -b && vite build --mode development && copy public\\manifest.dev.json dist\\manifest.json",
+    "build": "tsc -b && vite build && node scripts/inline-content-script.js && copy public\\manifest.json dist-chrome\\manifest.json",
+    "build:dev": "tsc -b && vite build --mode development && node scripts/inline-content-script.js && copy public\\manifest.dev.json dist-chrome\\manifest.json",
+    "build:firefox": "tsc -b && cross-env BROWSER=firefox vite build && cross-env BROWSER=firefox node scripts/inline-content-script.js && copy public\\manifest.firefox.json dist-firefox\\manifest.json",
+    "build:firefox:dev": "tsc -b && cross-env BROWSER=firefox vite build --mode development && cross-env BROWSER=firefox node scripts/inline-content-script.js && copy public\\manifest.firefox.dev.json dist-firefox\\manifest.json",
+    "build:all": "npm run build && npm run build:firefox",
+    "build:all:dev": "npm run build:dev && npm run build:firefox:dev",
     "watch": "tsc -b && vite build --watch --mode development",
     "dev:watch": "npm run build:dev && npm run watch",
     "dev:help": "node scripts/dev-helper.cjs",
@@ -32,10 +36,13 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/chrome": "^0.1.32",
+    "@types/firefox-webext-browser": "^120.0.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "cross-env": "^10.1.0",
+    "esbuild": "^0.27.1",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
@@ -43,6 +50,7 @@
     "nodemon": "^3.1.11",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "web-ext": "^8.2.0"
   }
 }

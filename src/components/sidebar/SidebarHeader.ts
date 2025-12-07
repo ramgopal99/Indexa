@@ -22,7 +22,7 @@ export class SidebarHeader {
     headerLeft.className = 'sidebar-header-left'
     const title = document.createElement('h2')
     title.className = 'sidebar-title'
-    title.textContent = 'Slider'
+    title.textContent = 'Indexa'
     headerLeft.appendChild(title)
 
     // Right side: Icon buttons
