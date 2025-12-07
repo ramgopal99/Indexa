@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Dev Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .message { margin: 10px 0; padding: 15px; border-radius: 8px; }
+        .user { background: #007bff; color: white; }
+        .assistant { background: #f8f9fa; border: 1px solid #dee2e6; }
+        h1, h2, h3 { color: #333; margin-top: 20px; }
+        code { background: #f1f3f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f8f9fa; padding: 15px; border-radius: 4px; overflow-x: auto; }
+        strong { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🧪 ChatGPT Extension Development Test</h1>
+    <p>If the extension is working, you should see a sidebar on the right with topics.</p>
+
+    <div class="message user">
+        <strong>You:</strong> Explain React hooks
+    </div>
+
+    <div class="message assistant">
+        <strong>Assistant:</strong>
+        <h1>React Hooks</h1>
+
+        <h2>useState Hook</h2>
+        <p>The <code>useState</code> hook manages state in functional components:</p>
+        <pre><code>const [count, setCount] = useState(0);</code></pre>
+
+        <h2>useEffect Hook</h2>
+        <p><code>useEffect</code> handles side effects:</p>
+        <pre><code>useEffect(() => {
+  document.title = `Count: ${count}`;
+}, [count]);</code></pre>
+
+        <h2>Common Hooks</h2>
+        <ul>
+            <li><strong>useState</strong> - State management</li>
+            <li><strong>useEffect</strong> - Side effects</li>
+            <li><strong>useContext</strong> - Context access</li>
+            <li><strong>useMemo</strong> - Memoization</li>
+        </ul>
+    </div>
+
+    <div class="message user">
+        <strong>You:</strong> Show me a complete example
+    </div>
+
+    <div class="message assistant">
+        <strong>Assistant:</strong>
+        <h1>Complete React Component Example</h1>
+
+        <h2>Counter Component</h2>
+        <pre><code>import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Count: {count}&lt;/h2&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Increment
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Counter;</code></pre>
+
+        <h2>Key Points</h2>
+        <ul>
+            <li>Import hooks from React</li>
+            <li>Use array destructuring for state</li>
+            <li>Update state with setter function</li>
+            <li>Components re-render on state change</li>
+        </ul>
+    </div>
+
+    <script>
+        // Auto-refresh check
+        setInterval(() => {
+            const sidebar = document.querySelector('#chatgpt-sidebar');
+            console.log('Sidebar check:', sidebar ? 'Found' : 'Not found');
+        }, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+/* Settings Dropdown Styles */
+
+/* CSS Custom Properties for theming */
+.settings-dropdown {
+  --settings-bg: #181818;
+  --settings-border: #374151;
+  --settings-text: #e5e7eb;
+  --settings-text-muted: #9ca3af;
+  --settings-hover: #374151;
+  --settings-button-bg: #374151;
+  --settings-button-border: #4b5563;
+  --settings-button-hover: #4b5563;
+}
+
+/* Light theme overrides */
+.settings-dropdown:not(.dark) {
+  --settings-bg: #ffffff;
+  --settings-border: #e5e7eb;
+  --settings-text: #111827;
+  --settings-text-muted: #6b7280;
+  --settings-hover: #f9fafb;
+  --settings-button-bg: #f3f4f6;
+  --settings-button-border: #e5e7eb;
+  --settings-button-hover: #e5e7eb;
+}
+
+.settings-dropdown-container {
+  position: fixed !important;
+  z-index: 10000 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.15s ease, visibility 0.15s ease !important;
+  pointer-events: none !important;
+}
+
+.settings-dropdown-container.settings-dropdown-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.settings-dropdown {
+  background: var(--settings-bg) !important;
+  border: 1px solid var(--settings-border) !important;
+  border-radius: 8px !important;
+  width: 200px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-8px) !important;
+  transition: transform 0.15s ease !important;
+}
+
+.settings-dropdown-container.settings-dropdown-visible .settings-dropdown {
+  transform: translateY(0) !important;
+}
+
+.settings-dropdown-body {
+  padding: 16px !important;
+  color: var(--settings-text) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Settings sections */
+.settings-section {
+  margin-bottom: 16px !important;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0 !important;
+}
+
+.settings-section-title {
+  margin: 0 0 8px 0 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--settings-text) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Theme toggle button */
+.theme-toggle-btn {
+  width: 100% !important;
+  background: var(--settings-button-bg) !important;
+  border: 1px solid var(--settings-button-border) !important;
+  border-radius: 6px !important;
+  color: var(--settings-text) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 10px 12px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  text-align: center !important;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--settings-button-hover) !important;
+  border-color: var(--settings-button-hover) !important;
+  transform: translateY(-1px) !important;
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0) !important;
+}
+
+.theme-toggle-btn.dark-mode {
+  background: #373669 !important;
+  border-color: #373669 !important;
+  color: #ffffff !important;
+}
+
+.theme-toggle-btn.dark-mode:hover {
+  background: #4a4a94 !important;
+  border-color: #4a4a94 !important;
+}
+
+/* Study Mode toggle button */
+.study-mode-toggle-btn {
+  width: 100% !important;
+  background: var(--settings-button-bg) !important;
+  border: 1px solid var(--settings-button-border) !important;
+  border-radius: 6px !important;
+  color: var(--settings-text) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 10px 12px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  text-align: center !important;
+}
+
+.study-mode-toggle-btn:hover {
+  background: var(--settings-button-hover) !important;
+  border-color: var(--settings-button-hover) !important;
+  transform: translateY(-1px) !important;
+}
+
+.study-mode-toggle-btn:active {
+  transform: translateY(0) !important;
+}
+
+.study-mode-toggle-btn.study-mode-active {
+  background: #2e7d32 !important;
+  border-color: #2e7d32 !important;
+  color: #ffffff !important;
+}
+
+.study-mode-toggle-btn.study-mode-active:hover {
+  background: #4caf50 !important;
+  border-color: #4caf50 !important;
+}

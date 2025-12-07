@@ -1,0 +1,61 @@
+/* Chrome Extension Popup Container - minimal styling to work with Chakra UI */
+
+/* CSS Custom Properties for theming */
+.popup-container {
+  --popup-bg: #f9fafb;
+  --popup-text: #111827;
+  --popup-text-muted: #6b7280;
+  --popup-border: #e5e7eb;
+}
+
+/* Dark theme overrides */
+.popup-container.dark {
+  --popup-bg: #181818;
+  --popup-text: #e5e7eb;
+  --popup-text-muted: #9ca3af;
+  --popup-border: #374151;
+}
+
+.popup-container {
+  width: 280px !important;
+  min-height: 200px !important;
+  max-height: 400px !important;
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--popup-bg) !important;
+  color: var(--popup-text) !important;
+  transition: background-color 0.3s ease, color 0.3s ease !important;
+  overflow: hidden !important;
+}
+
+/* Override Chakra UI styles */
+.popup-container[data-theme],
+.popup-container.dark {
+  background: var(--popup-bg) !important;
+  color: var(--popup-text) !important;
+}
+
+/* Ensure all child elements respect theme */
+.popup-container.dark * {
+  color: var(--popup-text) !important;
+}
+
+/* Header styling - theme aware */
+.popup-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.popup-container.dark .popup-header {
+  background: linear-gradient(135deg, #373669 0%, #4a4a94 100%) !important;
+}
+
+/* Force dark mode background on all Box elements */
+.popup-container.dark > div {
+  background-color: var(--popup-bg) !important;
+}
+
+/* Override Chakra UI Box default background */
+.popup-container.dark [class*="chakra-box"] {
+  background-color: var(--popup-bg) !important;
+  color: var(--popup-text) !important;
+}
+

@@ -1,0 +1,710 @@
+/* Sidebar container - Dark theme with slide animation from right */
+
+/* CSS Custom Properties for theming */
+.side-indexer-sidebar {
+  --sidebar-bg: #181818;
+  --sidebar-border: #374151;
+  --sidebar-text: #ffffff;
+  --sidebar-text-secondary: #e5e7eb;
+  --sidebar-text-muted: #9ca3af;
+  --sidebar-hover: #374151;
+  --sidebar-accent: #373669;
+  --sidebar-highlight: rgba(255, 107, 53, 0.6);
+  --sidebar-highlight-border: #ff6b35;
+}
+
+/* Light theme overrides */
+.side-indexer-sidebar:not(.dark) {
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #e5e7eb;
+  --sidebar-text: #111827;
+  --sidebar-text-secondary: #374151;
+  --sidebar-text-muted: #6b7280;
+  --sidebar-hover: #f9fafb;
+  --sidebar-accent: #3b82f6;
+  --sidebar-highlight: rgba(255, 107, 53, 0.5);
+  --sidebar-highlight-border: #ff6b35;
+}
+
+/* Heading labels should be primary black in light mode */
+.side-indexer-sidebar:not(.dark) .heading-label {
+  color: #000000 !important;
+}
+
+/* Light mode: You and AI labels are also primary black with light background */
+.side-indexer-sidebar:not(.dark) .heading-label.user,
+.side-indexer-sidebar:not(.dark) .heading-label.ai {
+  color: #000000 !important;
+  background-color: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Light mode: Level labels (H1, H2, etc.) also have light background */
+.side-indexer-sidebar:not(.dark) .heading-label:not(.user):not(.ai) {
+  background-color: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Light mode: Heading labels background changes to white on hover */
+.side-indexer-sidebar:not(.dark) .topic-item:hover .heading-label {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Light mode: You and AI labels also get white background on hover */
+.side-indexer-sidebar:not(.dark) .topic-item:hover .heading-label.user,
+.side-indexer-sidebar:not(.dark) .topic-item:hover .heading-label.ai {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Light mode overrides for icons and buttons */
+.side-indexer-sidebar:not(.dark) .sidebar-header-button {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+.side-indexer-sidebar:not(.dark) .sidebar-header-button svg {
+  color: #111827 !important;
+  stroke: #111827 !important;
+}
+
+/* Light mode: Icons turn white on hover */
+.side-indexer-sidebar:not(.dark) .sidebar-header-button:hover {
+  color: #ffffff !important;
+}
+
+.side-indexer-sidebar:not(.dark) .sidebar-header-button:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Light mode: Menu/Chat tabs background white */
+.side-indexer-sidebar:not(.dark) .sidebar-tab {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+.side-indexer-sidebar:not(.dark) .sidebar-tab svg {
+  color: #111827 !important;
+}
+
+/* Light mode: Inactive tabs stay dark */
+.side-indexer-sidebar:not(.dark) .sidebar-tab:not(.active) {
+  color: #111827 !important;
+}
+
+.side-indexer-sidebar:not(.dark) .sidebar-tab:not(.active) svg {
+  color: #111827 !important;
+}
+
+/* Light mode: Hover effect for inactive tabs */
+.side-indexer-sidebar:not(.dark) .sidebar-tab:not(.active):hover {
+  background: #f9fafb !important;
+  color: #111827 !important;
+  border-color: #e5e7eb !important;
+}
+
+.side-indexer-sidebar:not(.dark) .sidebar-tab:not(.active):hover svg {
+  color: #111827 !important;
+}
+
+/* Light mode: Active tab uses same purple color as dark mode */
+.side-indexer-sidebar:not(.dark) .sidebar-tab.active {
+  background: #373669 !important;
+  border-color: #373669 !important;
+  color: #ffffff !important;
+}
+
+.side-indexer-sidebar:not(.dark) .sidebar-tab.active svg {
+  color: #ffffff !important;
+}
+
+/* Light mode: Active tab hover effect */
+.side-indexer-sidebar:not(.dark) .sidebar-tab.active:hover {
+  background: #4a4a94 !important;
+  border-color: #4a4a94 !important;
+  color: #ffffff !important;
+}
+
+.side-indexer-sidebar:not(.dark) .sidebar-tab.active:hover svg {
+  color: #ffffff !important;
+}
+
+/* Light mode: Collapse button background white */
+.side-indexer-sidebar:not(.dark) .sidebar-expand-all-btn {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+.side-indexer-sidebar:not(.dark) .sidebar-expand-all-btn svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* Light mode: Tabs section background white */
+.side-indexer-sidebar:not(.dark) .sidebar-tabs-section {
+  background: #ffffff !important;
+}
+
+/* Light mode: Hover text white */
+.side-indexer-sidebar:not(.dark) .topic-item:hover .topic-text {
+  color: #ffffff !important;
+}
+
+/* Light mode: Expand icon primary black */
+.side-indexer-sidebar:not(.dark) .expand-icon {
+  color: #000000 !important;
+}
+
+.side-indexer-sidebar:not(.dark) .expand-icon svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* Light mode: Expand icon turns light gray on hover */
+.side-indexer-sidebar:not(.dark) .expand-icon:hover {
+  color: #ffffff !important;
+}
+
+.side-indexer-sidebar:not(.dark) .expand-icon:hover svg {
+  color: #6b7280 !important;
+  stroke: #6b7280 !important;
+}
+.side-indexer-sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  right: -320px !important; /* Start hidden off-screen to the right */
+  left: auto !important;
+  width: 300px !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  background: var(--sidebar-bg) !important;
+  border-left: 1px solid var(--sidebar-border) !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.3) !important;
+  z-index: 9999 !important;
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  transition: right 0.3s ease-in-out !important;
+}
+
+/* Sidebar visible state */
+.side-indexer-sidebar.sidebar-visible {
+  right: 0 !important;
+}
+
+/* Main content shift when sidebar is visible - pushes content to make room */
+body.sidebar-active {
+  margin-right: 300px !important;
+  transition: margin-right 0.3s ease-in-out !important;
+  overflow-x: visible !important; /* Ensure horizontal scrolling if needed */
+}
+
+/* Ensure content stays visible when sidebar pushes it */
+body.sidebar-active * {
+  max-width: calc(100vw - 300px) !important;
+  box-sizing: border-box !important;
+}
+
+/* Additional overflow handling for content containers */
+body.sidebar-active main,
+body.sidebar-active article,
+body.sidebar-active .content,
+body.sidebar-active #content,
+body.sidebar-active .main-content {
+  overflow-x: auto !important; /* Allow horizontal scrolling for content areas if needed */
+}
+
+/* Smooth transitions for all sidebar elements */
+.side-indexer-sidebar * {
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Sidebar header */
+.side-indexer-sidebar .sidebar-header {
+  padding: 12px !important;
+  border-bottom: 1px solid #374151 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background: var(--sidebar-bg) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1 !important;
+}
+
+.side-indexer-sidebar .sidebar-header-left {
+  flex: 1 !important;
+}
+
+.side-indexer-sidebar .sidebar-title {
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: var(--sidebar-text) !important;
+  letter-spacing: 0.5px !important;
+}
+
+.side-indexer-sidebar .sidebar-header-right {
+  display: flex !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+.side-indexer-sidebar .sidebar-header-button {
+  background: #181818 !important;
+  border: 1px solid #374151 !important;
+  border-radius: 6px !important;
+  color: var(--sidebar-text-secondary) !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  outline: none !important;
+  padding: 0 !important;
+}
+
+.side-indexer-sidebar .sidebar-header-button svg {
+  width: 16px !important;
+  height: 16px !important;
+  stroke: currentColor !important;
+}
+
+.side-indexer-sidebar .sidebar-header-button:hover {
+  background: #181818 !important;
+  border-color: #4b5563 !important;
+  transform: scale(1.05) !important;
+}
+
+.side-indexer-sidebar .sidebar-header-button:active {
+  transform: scale(0.95) !important;
+}
+
+.side-indexer-sidebar .close-button:hover {
+  background: #7f1d1d !important;
+  border-color: #991b1b !important;
+}
+
+/* Tabs and Expand/Collapse Section */
+.side-indexer-sidebar .sidebar-tabs-section {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 8px 16px !important;
+  border-bottom: 1px solid #374151 !important;
+  background: #181818 !important;
+  gap: 12px !important;
+}
+
+.side-indexer-sidebar .sidebar-tabs {
+  display: flex !important;
+  gap: 4px !important;
+  flex: 1 !important;
+}
+
+.side-indexer-sidebar .sidebar-tab {
+  background: #181818 !important;
+  border: 1px solid #374151 !important;
+  border-radius: 6px !important;
+  color: var(--sidebar-text-muted) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 6px 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  outline: none !important;
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.side-indexer-sidebar .sidebar-tab svg {
+  flex-shrink: 0 !important;
+  vertical-align: middle !important;
+  color: inherit !important;
+}
+
+.side-indexer-sidebar .sidebar-tab:hover {
+  background: var(--sidebar-hover) !important;
+  color: var(--sidebar-text-secondary) !important;
+}
+
+.side-indexer-sidebar .sidebar-tab.active {
+  background: var(--sidebar-accent) !important;
+  border-color: var(--sidebar-accent) !important;
+  color: white !important;
+}
+
+.side-indexer-sidebar .sidebar-expand-all-btn {
+  background: #181818 !important;
+  border: 1px solid #374151 !important;
+  border-radius: 6px !important;
+  color: var(--sidebar-text-muted) !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  outline: none !important;
+  padding: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.side-indexer-sidebar .sidebar-expand-all-btn:hover {
+  background: var(--sidebar-hover) !important;
+  border-color: #4b5563 !important;
+  color: var(--sidebar-text-secondary) !important;
+  transform: scale(1.05) !important;
+}
+
+.side-indexer-sidebar .sidebar-expand-all-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+  stroke: currentColor !important;
+}
+
+.side-indexer-sidebar .topics-list {
+  padding: 8px 0 !important;
+}
+
+.side-indexer-sidebar .topic-item {
+  padding: 8px 0 !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  cursor: pointer !important;
+  border-bottom: 1px solid #374151 !important;
+  transition: all 0.2s !important;
+  position: relative !important;
+}
+
+/* Remove left padding for chat items (You/AI) to reduce gap */
+.side-indexer-sidebar .topic-item.user,
+.side-indexer-sidebar .topic-item.ai {
+  padding-left: 0px !important;
+}
+
+/* Add minimal padding to topic-text for chat items */
+.side-indexer-sidebar .topic-item.user .topic-text,
+.side-indexer-sidebar .topic-item.ai .topic-text {
+  padding-left: 12px !important;
+}
+
+.side-indexer-sidebar .topic-item:hover {
+  background-color: #374151 !important;
+}
+
+.side-indexer-sidebar .expand-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 16px !important;
+  height: 16px !important;
+  color: var(--sidebar-text-muted) !important;
+  cursor: pointer !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.side-indexer-sidebar .expand-icon svg {
+  width: 100% !important;
+  height: 100% !important;
+  stroke: currentColor !important;
+}
+
+.side-indexer-sidebar .expand-icon:hover {
+  color: var(--sidebar-text-secondary) !important;
+  transform: scale(1.2) !important;
+}
+
+.side-indexer-sidebar .expand-icon-placeholder {
+  display: inline-block !important;
+  width: 16px !important;
+  height: 16px !important;
+  flex-shrink: 0 !important;
+}
+
+.side-indexer-sidebar .topic-item.has-children .topic-text {
+  cursor: pointer !important;
+}
+
+.side-indexer-sidebar .heading-label {
+  display: inline-block !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--sidebar-text) !important;
+  margin-right: 6px !important;
+  background-color: #2d3748 !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+}
+
+/* Chat message labels */
+.side-indexer-sidebar .heading-label.user,
+.side-indexer-sidebar .heading-label.ai {
+  width: 32px !important;
+  text-align: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.side-indexer-sidebar .heading-label.user {
+  background-color: #374151!important;
+  color: #dbeafe !important;
+  border: 1px solid #374151 !important;
+}
+
+.side-indexer-sidebar .heading-label.ai {
+  background-color: #374151 !important;
+  color: #dcfce7 !important;
+  border: 1px solid #374151 !important;
+}
+
+.side-indexer-sidebar .topic-text {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  color: var(--sidebar-text) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+.side-indexer-sidebar .no-topics {
+  padding: 32px 16px !important;
+  text-align: center !important;
+  color: #6b7280 !important;
+  font-style: italic !important;
+}
+
+/* Highlight animation for clicked topics - Matches active tab color */
+.side-indexer-highlight {
+  background-color: var(--sidebar-highlight) !important;
+  border: 4px solid var(--sidebar-highlight-border) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 25px rgba(255, 107, 53, 0.8), 0 0 10px rgba(255, 107, 53, 0.6) !important;
+  padding: 8px !important;
+  margin: -8px !important;
+  position: relative !important;
+  z-index: 1000 !important;
+  opacity: 1 !important;
+  transition: all 0.5s ease-in-out !important;
+  animation: highlight-pulse 1.5s ease-in-out !important;
+}
+
+/* Smooth fade out when highlight is being removed */
+.side-indexer-highlight.fade-out {
+  opacity: 0 !important;
+  background-color: rgba(255, 107, 53, 0.1) !important;
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.2) !important;
+}
+
+@keyframes highlight-pulse {
+  0% {
+    background-color: rgba(255, 107, 53, 0.6) !important;
+  }
+  50% {
+    background-color: rgba(255, 107, 53, 0.8) !important;
+  }
+  100% {
+    background-color: rgba(255, 107, 53, 0.6) !important;
+  }
+}
+
+/* Search result highlighting */
+.side-indexer-sidebar .topic-item.search-result {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  border-left: 3px solid #3b82f6 !important;
+  box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.3) !important;
+}
+
+.side-indexer-sidebar .topic-item.search-result .topic-text {
+  color: var(--sidebar-text) !important;
+  font-weight: 500 !important;
+}
+
+.side-indexer-sidebar .topic-item.search-result:hover {
+  background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Search text highlighting within topics */
+.side-indexer-sidebar .search-highlight {
+  background-color: rgba(255, 107, 53, 0.5) !important;
+  color: var(--sidebar-text) !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.7) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .side-indexer-sidebar {
+    width: 250px !important;
+  }
+
+  body.sidebar-active {
+    margin-right: 250px !important;
+  }
+
+  /* Ensure content stays visible on smaller screens */
+  body.sidebar-active * {
+    max-width: calc(100vw - 250px) !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Inline editing styles */
+.topic-content[contenteditable="true"] {
+  border: 1px solid #007acc !important;
+  border-radius: 3px !important;
+  padding: 2px 4px !important;
+  background-color: white !important;
+  color: black !important;
+  min-width: 50px !important;
+  display: inline-block !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
+}
+
+/* Make topics appear editable on hover */
+.topic-text {
+  transition: opacity 0.2s ease;
+}
+
+.topic-text:hover {
+  opacity: 0.8;
+  cursor: text;
+}
+
+.topic-content {
+  display: inline;
+}
+
+/* Study Mode Checkboxes - Chakra UI inspired design */
+.study-checkbox {
+  position: absolute;
+  left: 12px;
+  top: 6px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #CBD5E0;
+  border-radius: 4px;
+  background-color: white;
+  appearance: none;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.study-checkbox:hover {
+  border-color: #007acc;
+  background-color: #f7fafc;
+}
+
+.study-checkbox:checked {
+  background-color: #007acc;
+  border-color: #007acc;
+}
+
+.study-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  animation: checkmark 0.2s ease;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.study-checkbox:focus {
+  outline: 2px solid rgba(0, 122, 204, 0.5);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.1);
+}
+
+/* Dark mode checkbox styling */
+.dark .study-checkbox {
+  border-color: #4A5568;
+  background-color: #2D3748;
+}
+
+.dark .study-checkbox:hover {
+  border-color: #007acc;
+  background-color: #4A5568;
+}
+
+.dark .study-checkbox:checked {
+  background-color: #007acc;
+  border-color: #007acc;
+}
+
+.dark .study-checkbox:focus {
+  box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.2);
+}
+
+/* Ensure checkboxes don't interfere with content layout */
+.topic-item .study-checkbox {
+  pointer-events: auto;
+}
+
+/* Ensure proper spacing between expand icon and heading label */
+.topic-item .expand-icon {
+  margin-right: 0px; /* No gap between expand icon and heading label */
+}
+
+.topic-item .heading-label {
+  margin-right: 6px; /* Gap between heading label and content */
+}
+
+/* Ensure gap between checkbox and heading label in study mode */
+.topic-item .study-checkbox + .topic-text .heading-label {
+  margin-left: 4px; /* Additional gap when checkbox is present */
+}
+
+/* Better accessibility and interaction states */
+.study-checkbox:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.study-checkbox:active {
+  transform: scale(0.95);
+}
+
