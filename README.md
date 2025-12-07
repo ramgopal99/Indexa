@@ -6,6 +6,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-green?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
 ![Chrome](https://img.shields.io/badge/chrome-%3E%3D88-orange?style=flat-square)
+![Firefox](https://img.shields.io/badge/firefox-%3E%3D109-orange?style=flat-square&logo=firefox&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 
@@ -19,14 +20,25 @@
 
 ## ✨ What is Indexa?
 
-Indexa is a smart Chrome extension that **automatically indexes and organizes** your AI chat conversations (ChatGPT, Claude, and more). No more scrolling through endless conversations to find that one important code snippet or explanation!
+Indexa is a smart browser extension (Chrome & Firefox) that **automatically indexes and organizes** your AI chat conversations (ChatGPT, Claude, and more). No more scrolling through endless conversations to find that one important code snippet or explanation!
+
+**🌟 New Features:**
+- 🌓 **Dark/Light Mode Toggle**: Switch themes with one click
+- 📚 **Study Mode**: Enhanced focus mode for better learning
+- 🚀 **Auto-Index**: Real-time indexing as you chat
+- 🔍 **Search Mode**: Advanced search with filters and quick access
+- 🤖 **AI vs You**: Convert and view conversation breakdown list
 
 ### 🎯 Key Features
 
-- **🚀 Auto-Detection**: Automatically activates on AI chat platforms
+- **🚀 Auto-Index**: Automatically detects and indexes AI chat platforms (ChatGPT, Claude)
 - **📊 Smart Indexing**: Extracts headings, code blocks, and key topics in real-time
 - **🎨 Beautiful Sidebar**: Clean, minimal interface that doesn't interfere with your chat
-- **⚡ Instant Navigation**: Click any topic to jump directly to it
+- **🌓 Dark/Light Mode**: Toggle between dark and light themes for comfortable viewing
+- **📚 Study Mode**: Enhanced focus mode for better learning and comprehension
+- **🔍 Search Mode**: Advanced search functionality with filters and quick access
+- **🤖 AI vs You**: Convert and view conversation list showing AI responses vs your messages
+- **⚡ Instant Navigation**: Click any topic to jump directly to it in the conversation
 - **💾 Local Storage**: Your data stays private on your device
 - **🔧 Developer-Friendly**: Open source and extensible
 
@@ -34,11 +46,19 @@ Indexa is a smart Chrome extension that **automatically indexes and organizes** 
 
 <div align="center">
 
-| Before | After |
-|--------|-------|
-| ![Before](https://via.placeholder.com/300x200/333333/FFFFFF?text=Long+Chat) | ![After](https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=Indexed+Chat) |
+| Before Indexa | After Indexa |
+|---------------|-------------|
+| ![Before Indexa](./public/beforeindexa.png) | ![After Indexa](./public/afterindexa..png) |
 
 *Indexa transforms chaotic conversations into organized knowledge*
+
+**Features Showcase:**
+- 🌓 **Dark Mode**: Comfortable viewing in low-light environments
+- ☀️ **Light Mode**: Clean, bright interface for daytime use
+- 📚 **Study Mode**: Enhanced focus for learning sessions
+- 🚀 **Auto-Index**: Real-time topic extraction as you chat
+- 🔍 **Search Mode**: Advanced search with filters and quick navigation
+- 🤖 **AI vs You**: View conversation breakdown showing AI responses vs your messages
 
 </div>
 
@@ -50,10 +70,9 @@ Indexa is a smart Chrome extension that **automatically indexes and organizes** 
    - Visit the [Chrome Web Store](#) *(Coming Soon)*
    - Or build from source (see Developer Setup below)
 
-2. **Install in Chrome**
-   - Open `chrome://extensions/`
-   - Enable "Developer mode" (toggle in top-right)
-   - Click "Load unpacked" and select the `dist` folder
+2. **Install in Browser**
+   - **Chrome/Edge**: Open `chrome://extensions/` → Enable "Developer mode" → "Load unpacked" → select `dist-chrome` folder
+   - **Firefox**: Open `about:debugging` → "This Firefox" → "Load Temporary Add-on" → select `dist-firefox/manifest.json`
 
 3. **Start Using**
    - Visit [ChatGPT](https://chat.openai.com) or [Claude](https://claude.ai)
@@ -169,6 +188,8 @@ Indexa works **completely automatically** - just start chatting!
 2. **Watch Magic Happen**: Indexa detects the page and shows a sidebar automatically
 3. **Real-time Indexing**: Topics appear as you chat - headings, code blocks, key concepts
 4. **Navigate Effortlessly**: Click any topic to jump directly to it in the conversation
+5. **Use Search Mode**: Click the search icon to find topics quickly with advanced filters
+6. **View AI vs You**: Switch to Chat tab to see conversation breakdown showing AI responses vs your messages
 
 ### 🔧 Manual Mode (Legacy)
 
@@ -183,8 +204,11 @@ For advanced users who want more control:
 - **📍 Sidebar**: Appears on the right side of AI chat pages
 - **🏷️ Topics**: Automatically extracted headings and key phrases
 - **💻 Code Blocks**: Syntax-highlighted code snippets
-- **🔍 Search**: Quick search through indexed content
+- **🔍 Search Mode**: Advanced search with filters, highlighting, and quick navigation
+- **🤖 AI vs You**: View conversation breakdown showing AI responses vs your messages in a list format
 - **⚙️ Settings**: Customize appearance and behavior
+  - **🌓 Theme Toggle**: Switch between dark and light modes
+  - **📚 Study Mode**: Enable enhanced focus mode for learning
 
 ### 🌟 Supported Platforms
 
@@ -216,9 +240,13 @@ Indexa respects your privacy and requires minimal permissions:
 
 ### 🎯 Phase 1: Core Features (Current)
 - ✅ Auto-detection on AI platforms
-- ✅ Real-time topic indexing
+- ✅ Real-time topic indexing (Auto-Index)
 - ✅ Beautiful sidebar interface
-- ✅ Cross-platform compatibility
+- ✅ Cross-platform compatibility (Chrome & Firefox)
+- ✅ Dark/Light mode toggle
+- ✅ Study mode for enhanced learning
+- ✅ Search Mode with advanced filters
+- ✅ AI vs You conversation breakdown list
 
 ### 🚀 Phase 2: Enhanced Features (Next 3 Months)
 - 🔄 **Multi-Platform Support**
@@ -228,16 +256,17 @@ Indexa respects your privacy and requires minimal permissions:
   - Perplexity AI
 
 - 🎨 **Advanced UI/UX**
-  - Dark/light theme toggle
+  - ✅ Dark/light theme toggle (Implemented!)
   - Customizable sidebar position
   - Keyboard shortcuts
   - Collapsible sections
 
 - 🧠 **Smart Features**
+  - ✅ Search Mode with filters (Implemented!)
+  - ✅ AI vs You conversation breakdown (Implemented!)
   - AI-powered topic summarization
   - Code syntax highlighting
   - Export conversations to Markdown
-  - Search within indexed content
 
 ### 🌟 Phase 3: Power User Features (6+ Months)
 - 📱 **Mobile Support**
