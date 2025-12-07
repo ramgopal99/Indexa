@@ -35,9 +35,14 @@ function Popup() {
           files: ['content.js']
         })
         console.log('Content script injected successfully')
+        // Wait longer for Firefox - it may need more time to initialize
+        await new Promise(resolve => setTimeout(resolve, 300))
+      } else {
+        console.error('Scripting API not available')
       }
     } catch (error) {
       console.error('Error injecting content script:', error)
+      throw error
     }
   }, [])
 
@@ -161,19 +166,26 @@ function Popup() {
       } catch (error) {
         // Content script might not be loaded, try to inject it
         console.log('Content script not ready, injecting...', error)
-        await injectContentScript(tab.id)
-        
-        // Wait a bit for injection to complete
-        await new Promise(resolve => setTimeout(resolve, 100))
-        
-        // Try again
         try {
+          await injectContentScript(tab.id)
+          
+          // Try again after injection (wait time is handled in injectContentScript)
           const response = await tabs.sendMessage(tab.id, { action: 'toggleSidebar' })
           if (response) {
             setIsSidebarActive(response.visible)
+          } else {
+            // If no response, assume it worked and show sidebar
+            setIsSidebarActive(true)
           }
         } catch (err) {
           console.error('Error toggling sidebar after injection:', err)
+          // Even if injection fails, try to show sidebar as fallback
+          try {
+            await tabs.sendMessage(tab.id, { action: 'showSidebar' })
+            setIsSidebarActive(true)
+          } catch (finalErr) {
+            console.error('Final attempt to show sidebar failed:', finalErr)
+          }
         }
       }
     } catch (error) {
